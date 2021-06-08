@@ -46,7 +46,7 @@ assert(challenge2(input: "Hello, world") == false, "Challenge 2: Test #4 - faile
 import Foundation
 
 func challenge2(input: String) -> Bool {
-    // convert input String into an array of lower case Characters
+    // convert input string into an array of lower case characters
     let input = Array(input.lowercased())
     // traverse the input in two directions:
     // . from the beginning: i
@@ -54,13 +54,13 @@ func challenge2(input: String) -> Bool {
     var i = 0, j = input.count - 1
     // end the loop, when i and j meet in the middle or cross each other
     while i < j {
-        // compare the Characters present at these two indices:
-        // . if Characters are not same, return false
+        // compare the characters present at these two indices:
+        // . if characters are not same, return false
         if input[i] != input[j] { return false }
         i += 1
         j -= 1
     }
-    // if the input String is a palindrome
+    // if the input string is a palindrome
     return true
 }
 
