@@ -47,9 +47,9 @@ import Foundation
 func challenge1(input: String) -> Bool { 
     var unq: Set<Character> = []
     for val in input { 
-        // for each Character in input String:
-        // . if Character is present in Set, return false
-        // . else, insert Character in Set
+        // for each character in input string:
+        // . if character is present in set, return false
+        // . else, insert character in set
         if unq.contains(val) { return false }
         unq.insert(val)
     }
