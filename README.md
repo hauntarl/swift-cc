@@ -2,7 +2,7 @@
 
 Prepare of iOS interviews, test yourself against friends, and level up your skills.
 
-This repository contains my solutions for coding challenges from the book: **[Swift Coding Challenges](https://www.hackingwithswift.com/store/swift-coding-challenges)** by *[Paul Hudson](https://twitter.com/twostraws)*
+> This repository contains my solutions for coding challenges from the book: **[Swift Coding Challenges](https://www.hackingwithswift.com/store/swift-coding-challenges)** by *[Paul Hudson](https://twitter.com/twostraws)*
 
 ## What's in the book?
 
