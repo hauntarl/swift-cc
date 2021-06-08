@@ -61,14 +61,12 @@ func challenge3(one: String, two: String) -> Bool {
     for ch in two {
         // if Character is absent, strings do not contain same set of Characters
         guard let count = map[ch] else { return false }
-        // if count becomes negative, two has more number of ch than one
-        if count - 1 < 0 { return false }
-        map[ch] = count - 1
+        // if count becomes 0, remove the entry from map
+        map[ch] = count > 1 ? count - 1 : nil
     }
 
-    // count all the remaining Characters, if count is 0
-    // the input strings contain same characters
-    return map.values.reduce(0, +) == 0
+    // if the map is empty, then input strings contain the same set of characters
+    return map.isEmpty
 }
 
 // test cases
