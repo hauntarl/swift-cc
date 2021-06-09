@@ -45,16 +45,9 @@ assert(challenge1(input: "Hello, world") == false, "Challenge 1: Test #4 - faile
 import Foundation
 
 func challenge1(input: String) -> Bool { 
-    var unq: Set<Character> = []
-    for val in input { 
-        // for each character in input string:
-        // . if character is present in set, return false
-        // . else, insert character in set
-        if unq.contains(val) { return false }
-        unq.insert(val)
-    }
-    // return true after no duplicate is found
-    return true
+    var unq = Set<Character>()
+    // for each char in input, check if set already contains it or not
+    return input.allSatisfy { unq.update(with: $0) == nil }
 }
 
 // test cases
