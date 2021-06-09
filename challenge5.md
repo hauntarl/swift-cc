@@ -2,18 +2,17 @@
 
 ## Count the characters
 
-> Difficulty: **Easy**
+> **Difficulty**: Easy
 
-Write a function that accepts a string, and returns how many times a specific character appears,
-taking case into account.
+Write a function that accepts a `string`, and returns how many *times a specific character appears*, taking *case into account*.
 
-> Tip: If you can solve this without using a `for-in` loop, you can consider it a Tricky challenge.
+> **Tip**: If you can solve this without using a `for-in` loop, you can consider it a Tricky challenge.
 
 ### Sample input and output
 
-- The letter `“a”` appears twice in `“The rain in Spain”`.
-- The letter `“i”` appears four times in `“Mississippi”`.
-- The letter `“i”` appears three times in `“Hacking with Swift”`.
+- The letter *“a”* appears twice in *“The rain in Spain”*.
+- The letter *“i”* appears four times in *“Mississippi”*.
+- The letter *“i”* appears three times in *“Hacking with Swift”*.
 
 ### Stub
 
@@ -63,7 +62,7 @@ assert(challenge5(input: "Mississippi", ch: Character("i")) == 4, "Challenge 5: 
 assert(challenge5(input: "Hacking with Swift", ch: Character("i")) == 3, "Challenge 5: Test #4 - failed")
 ```
 
-> **Time Complexity** (worst case) `O(n)`
+> **Time Complexity** (worst case): `O(n)`
 
 ### Solution 2 - Paul Hudson
 
@@ -98,4 +97,4 @@ assert(challenge5(input: "Mississippi", ch: "i") == 4, "Challenge 5: Test #3 - f
 assert(challenge5(input: "Hacking with Swift", ch: "i") == 3, "Challenge 5: Test #4 - failed")
 ```
 
-> **Time Complexity** (worst case) `O(n)`
+> **Time Complexity** (worst case): `O(n)`
