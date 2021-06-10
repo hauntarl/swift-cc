@@ -22,7 +22,7 @@ import Foundation
 
 func challenge6(input: String) -> String { 
     // your code goes here
-    return 0
+    return ""
 }
 
 // test cases
