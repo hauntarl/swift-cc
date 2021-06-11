@@ -69,4 +69,4 @@ assert(challenge12(input: "flip flip flip") == "flip", "Challenge 12: Test #4 - 
 assert(challenge12(input: "flipflipflip") == "flipflipflip", "Challenge 12: Test #5 - failed")
 ```
 
-> **Time Complexity** (worst case): `O(n)`
+> **Time Complexity** (worst case): `O(n*m)` - where n = no. of components, m = size of substring
