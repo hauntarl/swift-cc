@@ -54,10 +54,3 @@ assert(challenge15(input: "The quick brown fox") == "ehT kciuq nworb xof", "Chal
 ```
 
 > **Time Complexity** (worst case): `O(n)`
-
-### Solution 2 - Paul Hudson
-
-``` swift
-```
-
-> **Time Complexity** (worst case): `O(n)`
