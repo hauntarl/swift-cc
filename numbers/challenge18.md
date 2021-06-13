@@ -32,10 +32,6 @@ assert(challenge18(base: 9, power: -1) == 0, "Challenge 18: Test #5 - failed")
 assert(challenge18(base: -2, power: 3) == -8, "Challenge 18: Test #6 - failed")
 ```
 
-### Hints
-
-> **NOTE**: Remember, read as few hints as you can to help you solve the challenge, and only read them if you’ve tried and failed.
-
 ### Solution 1
 
 ``` swift
