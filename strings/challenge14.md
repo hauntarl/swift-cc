@@ -70,12 +70,10 @@ func permutations(
     }
     
     permutations(for: &input, at: index + 1, with: callback)
-    var next = index + 1
-    while next < input.count {
+    for next in (index + 1)..<input.count {
         (input[index], input[next]) = (input[next], input[index])
         permutations(for: &input, at: index + 1, with: callback)
         (input[index], input[next]) = (input[next], input[index])
-        next += 1
     }
 }
 
