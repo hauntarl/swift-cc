@@ -60,4 +60,4 @@ assert(challenge18(base: 9, power: -1) == 0, "Challenge 18: Test #5 - failed")
 assert(challenge18(base: -2, power: 3) == -8, "Challenge 18: Test #6 - failed")
 ```
 
-> **Time Complexity** (worst case): `O(n)` - when base is greater than 2
+> **Time Complexity** (worst case): `O(n)`
