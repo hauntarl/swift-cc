@@ -21,7 +21,7 @@ Write a function that accepts an `Int` as its parameter and returns `true` if th
 ``` swift
 import Foundation
 
-func challenge20(number: Int) -> Bool { 
+func challenge20(num: Int) -> Bool { 
     // your code goes here
     return false
 }
