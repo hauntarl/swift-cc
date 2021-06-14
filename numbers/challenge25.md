@@ -70,7 +70,7 @@ assert(challenge25(num: 16) == 4, "Challenge 25: Test #3 - failed")
 assert(challenge25(num: 15) == 3, "Challenge 25: Test #4 - failed")
 ```
 
-> **Time Complexity** (worst case): `O(log(n))` - where is the input number
+> **Time Complexity** (worst case): `O(log(n))` - where n is the input number
 
 ### Solution 2 - Paul Hudson
 
