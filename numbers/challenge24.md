@@ -68,20 +68,18 @@ import Foundation
 let regex = try! NSRegularExpression(pattern: #"\d+"#)
 
 func challenge24(input: String) -> Int {
-    var currentNumber = ""
-    var sum = 0
-    for letter in input {
-        let strLetter = String(letter)
+    var (cur, sum) = ("", 0)
+    for ch in input {
+        let ch = String(ch)
 
-        if Int(strLetter) != nil {
-            currentNumber += strLetter
+        if Int(ch) != nil {
+            cur += ch
         } else {
-            sum += Int(currentNumber) ?? 0
-            currentNumber = ""
+            sum += Int(cur) ?? 0
+            cur = ""
         }
     }
-    sum += Int(currentNumber) ?? 0
-    return sum
+    return sum + (Int(cur) ?? 0)
 }
 
 // test cases
