@@ -57,11 +57,12 @@ func generateFactorials() -> (Int) -> Int {
 
 let factorial = generateFactorials()
 
+// make the function generic
 // accepts input as a reference to avoid memory contention due to copies of input
-func permutations(
-    for input: inout ContiguousArray<Character>,
+func permutations<Element>(
+    for input: inout ContiguousArray<Element>,
     at index: Int = 0,
-    with callback: (ContiguousArray<Character>) -> Void
+    with callback: (ContiguousArray<Element>) -> Void
 ) {
     // when a single permutation is created
     if index == input.count {
@@ -71,9 +72,9 @@ func permutations(
     
     permutations(for: &input, at: index + 1, with: callback)
     for next in (index + 1)..<input.count {
-        (input[index], input[next]) = (input[next], input[index])
+        input.swapAt(index, next)
         permutations(for: &input, at: index + 1, with: callback)
-        (input[index], input[next]) = (input[next], input[index])
+        input.swapAt(index, next)
     }
 }
 
