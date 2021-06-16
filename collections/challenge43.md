@@ -99,23 +99,23 @@ final class LinkedList<Element> {
     func insert(_ data: Element, at index: Int = 0) {
         precondition(index >= 0, "index can't be negative")
     
-        if size == 0 || index >= size { 
+        if size == 0 || index >= size {
             append(data) 
             return
         }
         
         let node = Node(data)
-        if index == 0 {    
+        var curr: Node<Element>! = head
+        var prev: Node<Element>! = nil
+        for _ in 0..<index {
+            prev = curr
+            curr = curr.next 
+        }
+        if prev == nil {
             node.next = head
             head = node
         } else {
-            var curr: Node<Element>! = head
-            var prev: Node<Element>! = nil
-            for _ in 1...index {
-                prev = curr
-                curr = curr.next 
-            }
-            if prev != nil { prev.next = node }
+            prev.next = node
             node.next = curr
         }
         size += 1
