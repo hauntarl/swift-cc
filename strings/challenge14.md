@@ -81,14 +81,11 @@ func permutations<Element>(
 func challenge14(input: String) -> [String] {
     // use contiguous arrays for better performance
     var input = ContiguousArray(input)
-    var index = 0
+    var result = ContiguousArray<String>()
     // give result array a specified size to avoid re-allocation using append
-    var result = ContiguousArray(repeating: "", count: factorial(input.count))
-    permutations(for: &input) {
-        // store generated permutation at current index and increment index position
-        result[index] = String($0)
-        index += 1
-    }
+    result.reserveCapacity(factorial(input.count))
+    
+    permutations(for: &input) { result.append(String($0)) }
     // convert contiguous array back to normal one for increased usability
     return Array(result)
 }
