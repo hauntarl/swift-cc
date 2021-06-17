@@ -58,14 +58,17 @@ func challenge50(_ numbers: [Int]) -> (ClosedRange<Int>, Int)? {
     var (i, j, curr) = (0, 0, 0)
     for (k, num) in numbers.enumerated() {
         if num < curr + num {
+            // include current number in range
             curr += num
             j += 1
         }
         else { 
+            // reset range to start from current number
             curr = num
             (i, j) = (k, k) 
         }
         
+        // if current range sum is greater, save it as best range
         if best < curr {
             best = curr
             (l, h) = (i, j)
