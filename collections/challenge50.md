@@ -27,10 +27,10 @@ func challenge50() {
 }
 
 // test cases
-assert(challenge50([0, 1, 1, -1, 2, 3, 1]) == 1...6, "Challenge 50: Test #1 - failed")
-assert(challenge50([10, 20, 30, -10, -20, 10, 20]) == 0...2, "Challenge 50: Test #2 - failed")
-assert(challenge50([1, -1, 2, -1]) == 2...2, "Challenge 50: Test #3 - failed")
-assert(challenge50([2, 0, 2, 0, 2]) == 0...4, "Challenge 50: Test #4 - failed")
+assert(challenge50([0, 1, 1, -1, 2, 3, 1])! == (1...6, 7), "Challenge 50: Test #1 - failed")
+assert(challenge50([10, 20, 30, -10, -20, 10, 20])! == (0...2, 60), "Challenge 50: Test #2 - failed")
+assert(challenge50([1, -1, 2, -1])! == (2...2, 2), "Challenge 50: Test #3 - failed")
+assert(challenge50([2, 0, 2, 0, 2])! == (0...4, 6), "Challenge 50: Test #4 - failed")
 assert(challenge50([Int]()) == nil, "Challenge 50: Test #5 - failed")
 ```
 
@@ -51,7 +51,7 @@ For more details: [https://github.com/hauntarl/real-python/blob/master/cp/max_su
 ``` swift
 import Foundation
 
-func challenge50(_ numbers: [Int]) -> ClosedRange<Int>? {
+func challenge50(_ numbers: [Int]) -> (ClosedRange<Int>, Int)? {
     if numbers.isEmpty { return nil }
     
     var (l, h, best) = (0, 0, 0)
@@ -71,14 +71,14 @@ func challenge50(_ numbers: [Int]) -> ClosedRange<Int>? {
             (l, h) = (i, j)
         }
     }
-    return l...h
+    return (l...h, best)
 }
 
 // test cases
-assert(challenge50([0, 1, 1, -1, 2, 3, 1]) == 1...6, "Challenge 50: Test #1 - failed")
-assert(challenge50([10, 20, 30, -10, -20, 10, 20]) == 0...2, "Challenge 50: Test #2 - failed")
-assert(challenge50([1, -1, 2, -1]) == 2...2, "Challenge 50: Test #3 - failed")
-assert(challenge50([2, 0, 2, 0, 2]) == 0...4, "Challenge 50: Test #4 - failed")
+assert(challenge50([0, 1, 1, -1, 2, 3, 1])! == (1...6, 7), "Challenge 50: Test #1 - failed")
+assert(challenge50([10, 20, 30, -10, -20, 10, 20])! == (0...2, 60), "Challenge 50: Test #2 - failed")
+assert(challenge50([1, -1, 2, -1])! == (2...2, 2), "Challenge 50: Test #3 - failed")
+assert(challenge50([2, 0, 2, 0, 2])! == (0...4, 6), "Challenge 50: Test #4 - failed")
 assert(challenge50([Int]()) == nil, "Challenge 50: Test #5 - failed")
 ```
 
