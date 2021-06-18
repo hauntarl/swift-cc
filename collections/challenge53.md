@@ -85,15 +85,6 @@ final class LinkedList<Element> {
     var head: Node<Element>!
 
     init() {}
-    
-    func traverse() {
-        var curr: Node<Element>! = head
-        while curr != nil {
-            print(curr.data, terminator: " ")
-            curr = curr.next
-        }
-        print()
-    }
 
     func findLoopNode() -> Node<Element>? {
         var slow: Node<Element>! = head
