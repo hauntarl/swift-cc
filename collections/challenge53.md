@@ -54,8 +54,8 @@ for ch in "abcdefghijklmnopqrstuvwxyz" {
 // ------------
 
 // test cases
-assert(list1.findLoopNode()! == loop, "Challenge 53: Test #1 - failed")
-assert(list2.findLoopNode() == nil, "Challenge 53: Test #2 - failed")
+assert(list1.findLoopNode() === loop, "Challenge 53: Test #1 - failed")
+assert(list2.findLoopNode() === nil, "Challenge 53: Test #2 - failed")
 ```
 
 ### Hints
@@ -71,28 +71,13 @@ assert(list2.findLoopNode() == nil, "Challenge 53: Test #2 - failed")
 ``` swift
 import Foundation
 
-let generateID: () -> UInt = {
-    var id: UInt = 0
-    return {
-        if id == UInt.max { id = 0 }
-        id += 1
-        return id
-    }
-}()
-
-final class Node<Element>: Equatable {
+final class Node<Element> {
     var data: Element
     var next: Node<Element>!
-    let id: UInt
-    
+
     init(_ data: Element) {
         self.data = data
         self.next = nil
-        self.id = generateID()
-    }
-    
-    static func ==(lhs: Node<Element>, rhs: Node<Element>) -> Bool {
-        lhs.id == rhs.id
     }
 }
 
@@ -116,12 +101,12 @@ final class LinkedList<Element> {
         while fast != nil && fast.next != nil {
             slow = slow.next
             fast = fast.next.next
-            if slow == fast { break }
+            if slow === fast { break }
         }
         if fast == nil || fast.next == nil { return nil }
         
         slow = head
-        while slow != fast {
+        while slow !== fast {
             slow = slow.next
             fast = fast.next
         }
@@ -168,8 +153,8 @@ for ch in "abcdefghijklmnopqrstuvwxyz" {
 // ------------
 
 // test cases
-assert(list1.findLoopNode()! == loop, "Challenge 53: Test #1 - failed")
-assert(list2.findLoopNode() == nil, "Challenge 53: Test #2 - failed")
+assert(list1.findLoopNode() === loop, "Challenge 53: Test #1 - failed")
+assert(list2.findLoopNode() === nil, "Challenge 53: Test #2 - failed")
 ```
 
 > **Time Complexity** (worst case): `O(n)`
