@@ -37,7 +37,6 @@ func challenge27(file name: String, lines: Int) -> String {
 }
 
 // test cases
-// test cases
 assert(challenge27(file: "input.txt", lines: 3) == "Twelfth Night, Othello, Macbeth", "Challenge 27: Test #1 - failed")
 assert(challenge27(file: "input.txt", lines: 100) == "Twelfth Night, Othello, Macbeth, King Lear, Julius Caesar, Hamlet, Cymbeline, Coriolanus, Antony and Cleopatra", "Challenge 27: Test #2 - failed")
 assert(challenge27(file: "input.txt", lines: 0) == "", "Challenge 27: Test #3 - failed")
