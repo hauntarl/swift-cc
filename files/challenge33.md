@@ -43,17 +43,24 @@ import Foundation
 
 func challenge33(in directory: String) -> [String] {
     let fm = FileManager.default
+    // create a stack of directory urls
     var stack = [URL(fileURLWithPath: directory)]
+    // variables to track duplicate files
     var (seen, dup) = (Set<String>(), Set<String>())
     while !stack.isEmpty {
         let cur = stack.removeLast()
+        // get contents of cur directory url,
+        // if it is not a directory, continue
         guard let files = try? fm.contentsOfDirectory(
             at: cur,
             includingPropertiesForKeys: nil
         ) else { continue }
 
         files.forEach {
-            if $0.hasDirectoryPath { 
+            // for files in current directory, check:
+            // if directory, push it onto the stack
+            // else, check for duplicate file name
+            if $0.hasDirectoryPath {
                 stack.append($0)
                 return
             }
