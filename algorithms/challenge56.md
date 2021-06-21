@@ -45,7 +45,7 @@ extension Array where Element: Comparable {
     func challenge55() -> [Element] {
         if isEmpty { return self }
 
-        var arr = self
+        var arr = ContiguousArray(self)
         for end in 1..<arr.count {
             let val = arr[end]
             var cur = end - 1
@@ -55,7 +55,7 @@ extension Array where Element: Comparable {
             }
             arr[cur + 1] = val
         }
-        return arr
+        return Array(arr)
     }
 }
 
