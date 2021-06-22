@@ -57,6 +57,15 @@ assert(challenge57(one: "112233", two: "112211") == false, "Challenge 57: Test #
 
 > **NOTE**: Remember, read as few hints as you can to help you solve the challenge, and only read them if you’ve tried and failed.
 
+1. *Stringification* holds the key to solve this problem simply. Your parameters should both be `Any`, and you can use the *String(describing:)* initializer to stringify them.
+2. You need to loop over all the characters in both stringified character arrays. To avoid out of bounds problems, make sure you start by checking both strings are the same length.
+3. You should store your character mappings using a dictionary of type `[Character: Character]`.
+4. If you convert the characters of each string into an array you’ll find subscripting significantly easier.
+5. When you loop over each letter in the current string, you can check if it exists as a key in your character map. For characters that exist, check that its value matches the letter in the second string – if it doesn’t, it’s not an isomorphic string.
+6. If your letter doesn’t exist as a key in the character map, it’s possible the second string’s letter does exist as a value attached to a different key. If so, it’s not an isomorphic string.
+7. If the character isn’t already a key, and the second string’s letter isn’t already a value, then add the character and matching second string letter to your character mapping dictionary.
+8. If you’ve made it through all the characters in the first string and not encountered any problems, you have an isomorphic string.
+
 ### Solution 1
 
 ``` swift
