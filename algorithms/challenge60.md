@@ -56,10 +56,7 @@ func verify(_ board: [[String]]) -> Bool {
     return true
 }
 
-func character(
-    at coord: (x: Int, y: Int), 
-    of board: [[String]]
-) -> String? {
+func character(at coord: (x: Int, y: Int), of board: [[String]]) -> String? {
     let ch = board[coord.x][coord.y]
     if ch.isEmpty { return nil }
     return ch
@@ -77,17 +74,13 @@ func checkDiagonals(of board: [[String]]) -> Bool {
 }
 
 func check(row: Int, of board: [[String]]) -> Bool {
-    if let ch = character(at: (row, 1), of: board) {
-        return board[row][0] == ch && board[row][2] == ch    
-    }
-    return false
+    guard let ch = character(at: (row, 1), of: board) else { return false }
+    return board[row][0] == ch && board[row][2] == ch
 }
 
 func check(col: Int, of board: [[String]]) -> Bool {
-    if let ch = character(at: (1, col), of: board) {
-        return board[0][col] == ch && board[2][col] == ch
-    } 
-    return false
+    guard let ch = character(at: (1, col), of: board) else { return false }
+    return board[0][col] == ch && board[2][col] == ch
 }
 
 func challenge60(board: [[String]]) -> Bool {
