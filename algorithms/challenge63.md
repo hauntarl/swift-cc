@@ -147,9 +147,9 @@ func challenge63( fill: String, in grid: [[String]], from point: Point) {
 }
 
 func print(grid: [[String]]) {
-    print("--------------------------------")
-    for row in grid { print("| \(row.joined(separator: ", ")) |") }
-    print("--------------------------------")
+    print("-----------------------")
+    for row in grid { print("| \(row.joined(separator: " ")) |") }
+    print("-----------------------")
 }
 
 // test cases
@@ -164,58 +164,39 @@ challenge63(fill: "_", in: grid, from: start)
 ```
 
 ``` terminal
---------------------------------
-| 0, 1, 1, 1, 0, 1, 0, 0, 1, 0 |
-| 0, 1, 1, 1, 0, 1, 0, 1, 0, 0 |
-| 0, 0, 0, 0, 0, 1, 0, 1, 0, 0 |
-| 0, 0, 1, 0, 1, 1, 1, 1, 0, 0 |
-| 1, 1, 0, 0, 0, 0, 1, 1, 1, 1 |
-| 0, 1, 0, 0, 0, 1, 0, 1, 1, 1 |
-| 0, 0, 0, 0, 0, 1, 0, 0, 1, 1 |
-| 0, 0, 0, 0, 1, 1, 0, 1, 0, 0 |
-| 0, 0, 1, 0, 1, 1, 0, 0, 0, 1 |
-| 1, 1, 1, 0, 0, 1, 1, 0, 1, 1 |
---------------------------------
-start value: 1
-start point: (8, 4), valid moves: [(7, 3), (7, 4), (9, 4), (7, 5), (8, 5), (9, 5)]
-start point: (7, 3), valid moves: [(7, 2), (6, 3), (6, 4)]
-start point: (7, 4), valid moves: []
-start point: (9, 4), valid moves: []
-start point: (7, 5), valid moves: [(8, 6)]
-start point: (8, 5), valid moves: [(9, 6)]
-start point: (9, 5), valid moves: []
-start point: (7, 2), valid moves: [(7, 1)]
-start point: (6, 3), valid moves: [(5, 2), (5, 3)]
-start point: (6, 4), valid moves: [(5, 5)]
-start point: (8, 6), valid moves: [(7, 7)]
-start point: (9, 6), valid moves: []
-start point: (7, 1), valid moves: [(8, 0)]
-start point: (5, 2), valid moves: [(5, 1), (4, 3)]
-start point: (5, 3), valid moves: []
-start point: (5, 5), valid moves: [(5, 6)]
-start point: (7, 7), valid moves: []
-start point: (8, 0), valid moves: []
-start point: (5, 1), valid moves: [(5, 0)]
-start point: (4, 3), valid moves: []
-start point: (5, 6), valid moves: [(4, 7), (5, 7)]
-start point: (5, 0), valid moves: []
-start point: (4, 7), valid moves: [(4, 8), (5, 8)]
-start point: (5, 7), valid moves: []
-start point: (4, 8), valid moves: [(5, 9)]
-start point: (5, 8), valid moves: [(6, 9)]
-start point: (5, 9), valid moves: []
-start point: (6, 9), valid moves: []
-total points filled: 28
---------------------------------
-| 0, 1, 1, 1, 0, _, 0, 0, _, 0 |
-| 0, 1, 1, 1, 0, _, 0, _, 0, 0 |
-| 0, 0, 0, 0, 0, _, 0, _, 0, 0 |
-| 0, 0, 1, 0, _, _, _, _, 0, 0 |
-| 1, 1, 0, 0, 0, 0, _, _, X, _ |
-| 0, 1, 0, 0, 0, _, 0, _, _, _ |
-| 0, 0, 0, 0, 0, _, 0, 0, _, _ |
-| 0, 0, 0, 0, _, _, 0, _, 0, 0 |
-| 0, 0, 1, 0, _, _, 0, 0, 0, 1 |
-| 1, 1, 1, 0, 0, _, _, 0, 1, 1 |
---------------------------------
+-----------------------
+| 0 0 0 0 1 0 1 0 1 1 |
+| 0 0 1 0 1 1 1 1 1 0 |
+| 1 0 0 0 0 1 0 1 1 0 |
+| 1 0 0 1 1 0 1 0 1 0 |
+| 0 0 1 1 1 1 0 0 1 0 |
+| 1 1 1 0 1 1 1 1 0 1 |
+| 0 0 0 0 1 1 0 0 1 0 |
+| 0 1 0 0 1 1 0 1 0 0 |
+| 1 0 1 1 1 1 0 1 0 1 |
+| 0 1 1 1 1 0 1 1 0 0 |
+-----------------------
+start value: 0
+start point: (1, 6), valid moves: [(0, 6), (2, 6), (0, 7), (2, 7)]
+start point: (0, 6), valid moves: []
+start point: (2, 6), valid moves: [(3, 5), (3, 6), (3, 7)]
+start point: (0, 7), valid moves: [(1, 8)]
+start point: (2, 7), valid moves: []
+start point: (3, 5), valid moves: []
+start point: (3, 6), valid moves: []
+start point: (3, 7), valid moves: []
+start point: (1, 8), valid moves: [(0, 9)]
+start point: (0, 9), valid moves: []
+total points filled: 10
+-----------------------
+| 0 0 0 0 1 0 1 0 1 1 |
+| 0 0 1 0 1 1 1 1 1 0 |
+| 1 0 0 0 0 1 0 1 1 0 |
+| 1 0 0 1 1 0 1 0 1 0 |
+| 0 0 1 1 1 1 0 0 1 0 |
+| 1 1 1 _ 1 1 1 1 0 1 |
+| _ X _ _ 1 1 0 0 1 0 |
+| _ 1 _ _ 1 1 0 1 0 0 |
+| 1 _ 1 1 1 1 0 1 0 1 |
+| _ 1 1 1 1 0 1 1 0 0 |
 ```
