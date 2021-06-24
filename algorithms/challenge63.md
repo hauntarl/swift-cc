@@ -89,13 +89,15 @@ challenge63(fill: "_", in: grid, from: /*insert start point*/)
 ``` swift
 import Foundation
 
-struct Point: Hashable, LosslessStringConvertible {
+// create a struct to represent a co-ordinate in given grid
+// make Point conform to Hashable to avoid re-visiting seen points
+// make Point representable as String to reduce visual density
+struct Point: Hashable, CustomStringConvertible {
     var x: Int
     var y: Int
     var description: String { return "(\(x), \(y))" }
 
     init(_ x: Int, _ y: Int) { (self.x, self.y) = (x, y) }
-    init?(_ description: String) { return nil }
 
     static func +=(lhs: inout Point, rhs: Point) {
         lhs.x += rhs.x
@@ -103,49 +105,71 @@ struct Point: Hashable, LosslessStringConvertible {
     }
 }
 
+// moves contains all the surrounding points for origin i.e. (0, 0)
+// utilize this to calc. surrounding points for a point in grid
 let moves = [
     Point(-1, -1), Point(0, -1), Point(1, -1),
     Point(-1, 0), Point(1, 0),
     Point(-1, 1), Point(0, 1), Point(1, 1)
 ]
 
+// nextMoves calc. and returns valid surrounding points based on:
+// - grid Boundaries
+// - given start point value
+// - whether point has already been visited
 func nextMoves(
     in grid: [[String]], 
     from point: Point, 
     with start: String,
-    not seen: Set<Point>) -> [Point] {
+    not seen: Set<Point>
+) -> [Point] {
+    // generate an array of surrounding points from given point in grid
     var valid = [Point](repeating: point, count: moves.count)
     for (cur, nxt) in moves.enumerated() { valid[cur] += nxt }
+    // filter out the surrounding points which do not satisfy conditions
     return valid.filter {
         limit ~= $0.x && limit ~= $0.y &&
         grid[$0.y][$0.x] == start && !seen.contains($0)
     }
 }
 
-func challenge63( fill: String, in grid: [[String]], from point: Point) {
+// performs flood fill in a given grid from a starting point
+func challenge63(in grid: [[String]], from point: Point) {
     print(grid: grid)
+    // find the value at starting position for reference
     let start = grid[point.y][point.x]
     print("start value: \(start)")
 
+    // create a copy of grid to perform flood fill operation
+    // create a queue with given starting point
     var (filled, queue) = (grid, [point])
+    // create a Set to avoid visiting same points
     var seen = Set(queue)
     while !queue.isEmpty {
         let point = queue.removeFirst()
-        filled[point.y][point.x] = fill
+        // fill the visited points
+        filled[point.y][point.x] = "_"
 
+        // find out the next possible moves from current position
         let moves = nextMoves(
             in: filled, from: point, 
             with: start, not: seen
         )
         print("start point: \(point), valid moves: \(moves)")
+        // mark the next moves as seen, marking them as visited before
+        // actually visiting has a great performance boost it will stop
+        // future iterations from adding same points in the queue
         for next in moves { seen.insert(next) }
+        // and add them to the queue to visit later
         queue.append(contentsOf: moves)
     }
+    // mark the start fill point with a different character for visual aid
     filled[point.y][point.x] = "X"
     print("total points filled: \(seen.count)")
     print(grid: filled)
 }
 
+// prints given grid in user readable format
 func print(grid: [[String]]) {
     print("-----------------------")
     for row in grid { print("| \(row.joined(separator: " ")) |") }
@@ -160,7 +184,7 @@ var grid = [[String]](
 )
 for y in limit { for x in limit { grid[y][x] = String(Int.random(in: 0...1)) } }
 let start = Point(Int.random(in: limit), Int.random(in: limit))
-challenge63(fill: "_", in: grid, from: start)
+challenge63(in: grid, from: start)
 ```
 
 ``` terminal
