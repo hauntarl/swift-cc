@@ -94,7 +94,7 @@ struct Point: Hashable, LosslessStringConvertible {
     var y: Int
     var description: String { return "(\(x), \(y))" }
 
-    init(_ point: (Int, Int)) { (x, y) = point }
+    init(_ x: Int, _ y: Int) { (self.x, self.y) = (x, y) }
     init?(_ description: String) { return nil }
 
     static func +=(lhs: inout Point, rhs: Point) {
@@ -104,9 +104,9 @@ struct Point: Hashable, LosslessStringConvertible {
 }
 
 let moves = [
-    Point((-1, -1)), Point((0, -1)), Point((1, -1)),
-    Point((-1, 0)), Point((1, 0)),
-    Point((-1, 1)), Point((0, 1)), Point((1, 1))
+    Point(-1, -1), Point(0, -1), Point(1, -1),
+    Point(-1, 0), Point(1, 0),
+    Point(-1, 1), Point(0, 1), Point(1, 1)
 ]
 
 func nextMoves(
@@ -159,7 +159,7 @@ var grid = [[String]](
     count: limit.count
 )
 for y in limit { for x in limit { grid[y][x] = String(Int.random(in: 0...1)) } }
-let start = Point((Int.random(in: 0...9), Int.random(in: 0...9)))
+let start = Point(Int.random(in: limit), Int.random(in: limit))
 challenge63(fill: "_", in: grid, from: start)
 ```
 
