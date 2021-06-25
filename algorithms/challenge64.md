@@ -75,7 +75,7 @@ func print(board: [Int]) -> Int {
     return 1
 }
 
-func challenge64(board: [Int], queen: Int) -> Int {
+func challenge64(board: inout [Int], queen: Int) -> Int {
     // when queen row number reaches max row of board, solution is found
     if queen == board.count { return print(board: board) }
 
@@ -97,17 +97,16 @@ func challenge64(board: [Int], queen: Int) -> Int {
             if deltaR == deltaC || deltaR == -deltaC { continue column }
         }
         // we have found a valid position for current queen
-        var copy = board
-        copy[queen] = col
+        board[queen] = col
         // recursively search for positions of next queens
-        total += challenge64(board: copy, queen: queen + 1)
+        total += challenge64(board: &board, queen: queen + 1)
     }
     return total
 }
 
 // test cases
-let board = [Int](repeating: 0, count: Int.random(in: 5...10))
-print("total solutions:", challenge64(board: board, queen: 0))
+var board = [Int](repeating: 0, count: Int.random(in: 5...10))
+print("total solutions:", challenge64(board: &board, queen: 0))
 ```
 
 ``` terminal
